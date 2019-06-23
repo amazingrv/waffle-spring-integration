@@ -13,8 +13,8 @@
 	<artifactId>springapp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>springapp</name>
-	<description>Demo project for Spring Boot</description>
+	<name>Waffle Integration Demo</name>
+	<description>Waffle integration demo for Spring Boot</description>
 
 	<properties>
 		<java.version>1.8</java.version>
