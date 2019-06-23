@@ -1,4 +1,4 @@
-package com.demo.dashboard;
+package com.demo.springwaffle;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

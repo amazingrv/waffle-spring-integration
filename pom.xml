@@ -9,8 +9,8 @@
 		<version>2.1.6.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>springapp</artifactId>
+	<groupId>com.demo</groupId>
+	<artifactId>springwaffle</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>Waffle Integration Demo</name>
