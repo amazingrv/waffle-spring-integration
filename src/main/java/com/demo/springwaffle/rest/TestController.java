@@ -11,7 +11,7 @@ import com.demo.springwaffle.constants.PathConstants;
 @RequestMapping(PathConstants.PATH_API_TEST)
 public class TestController {
 
-	@GetMapping("/principal")
+	@GetMapping
 	public String getPrincipal(Authentication auth) {
 		return String.format("You are logged in as: %s", auth.getPrincipal());
 	}
