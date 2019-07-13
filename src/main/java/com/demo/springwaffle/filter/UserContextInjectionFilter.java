@@ -43,7 +43,7 @@ public class UserContextInjectionFilter extends GenericFilterBean {
 		if (authentication != null && authentication.getClass() == WindowsAuthenticationToken.class) {
 			WindowsAuthenticationToken token = (WindowsAuthenticationToken) authentication;
 			WindowsPrincipal principal = (WindowsPrincipal) token.getPrincipal();
-			log.debug("Inside user context injector");
+			log.debug("Context injection started.");
 			String[] parts = principal.getName().split(Pattern.quote("\\"));
 
 			List<Object> objList = ldapTemplate.search(LdapQueryBuilder.query().where("uid").is(parts[1]),
@@ -54,6 +54,7 @@ public class UserContextInjectionFilter extends GenericFilterBean {
 
 			addRoleToAuthentication(token, !(Objects.isNull(objList) || objList.isEmpty()));
 			sec.setAuthentication(token);
+			log.debug("User context injection completed for user: {}", parts[1]);
 		}
 
 		chain.doFilter(request, response);

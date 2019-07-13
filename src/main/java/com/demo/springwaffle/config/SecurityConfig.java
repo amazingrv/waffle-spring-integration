@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and().authorizeRequests()
+		http.cors().and().csrf().csrfTokenRepository(new CookieCsrfTokenRepository()).and().authorizeRequests()
 				.anyRequest().authenticated().and().httpBasic().authenticationEntryPoint(entryPoint).and()
 				.addFilterBefore(negotiateSecurityFilter, BasicAuthenticationFilter.class)
 				.addFilterAfter(userContextInjectorFilter, BasicAuthenticationFilter.class);
