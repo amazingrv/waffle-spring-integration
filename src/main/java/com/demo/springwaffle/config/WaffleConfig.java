@@ -6,6 +6,8 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.demo.springwaffle.filter.UserContextInjectionFilter;
+
 import waffle.servlet.spi.BasicSecurityFilterProvider;
 import waffle.servlet.spi.NegotiateSecurityFilterProvider;
 import waffle.servlet.spi.SecurityFilterProvider;
@@ -80,4 +82,13 @@ public class WaffleConfig {
 		bean.setEnabled(false);
 		return bean;
 	}
+
+	@Bean
+	public FilterRegistrationBean<UserContextInjectionFilter> userContextInjectionFilterRegistrationBean(
+			final UserContextInjectionFilter filter) {
+		final FilterRegistrationBean<UserContextInjectionFilter> bean = new FilterRegistrationBean<>(filter);
+		bean.setEnabled(false);
+		return bean;
+	}
+
 }
