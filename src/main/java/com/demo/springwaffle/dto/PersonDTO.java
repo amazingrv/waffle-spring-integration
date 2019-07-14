@@ -1,11 +1,6 @@
-package com.demo.springwaffle.entity;
+package com.demo.springwaffle.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity
-public class PersonEntity {
-	@Id
+public class PersonDTO {
 	private String uid;
 	private String firstName;
 
