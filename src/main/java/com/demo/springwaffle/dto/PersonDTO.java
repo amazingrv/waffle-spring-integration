@@ -1,23 +1,20 @@
 package com.demo.springwaffle.dto;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+import javax.validation.constraints.NotBlank;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 public class PersonDTO {
-	private String uid;
-	private String firstName;
+    @NotBlank(message = "Id is mandatory")
+    private String uid;
 
-	public String getUid() {
-		return uid;
-	}
-
-	public void setUid(String uid) {
-		this.uid = uid;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
+    @NotBlank(message = "Name is mandatory")
+    private String firstName;
 }
