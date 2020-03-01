@@ -33,7 +33,7 @@ public class LoggingAspect {
     /**
      * Pointcut that matches all Spring beans in the application's main packages.
      */
-    @Pointcut("within(com.demo.springwaffle.repo..*)" + "within(com.demo.springwaffle.service..*)"
+    @Pointcut(value = "within(com.demo.springwaffle.repo..*)" + "within(com.demo.springwaffle.service..*)"
             + " || within(com.demo.springwaffle.rest..*)")
     public void applicationPackagePointcut() {
         // Method is empty as this is just a Pointcut, the implementations are in the

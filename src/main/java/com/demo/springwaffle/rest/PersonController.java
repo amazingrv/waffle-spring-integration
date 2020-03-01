@@ -1,11 +1,11 @@
 package com.demo.springwaffle.rest;
 
 import com.demo.springwaffle.constants.PathConstants;
+import com.demo.springwaffle.constants.ServiceConstants;
 import com.demo.springwaffle.dto.PersonDTO;
 import com.demo.springwaffle.service.PersonService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.MediaType;
@@ -22,12 +22,11 @@ import java.util.Map;
 @RequestMapping(PathConstants.PATH_API_PERSON)
 public class PersonController {
 
-    public static final String PERSONS = "persons";
-    public static final String PERSON = "person";
-    public static final String USER_ID = "userId";
+    private final PersonService service;
 
-    @Autowired
-    private PersonService service;
+    public PersonController(PersonService service) {
+        this.service = service;
+    }
 
     private ResponseEntity<Object> getResponse(String key, Object result) {
         Map<String, Object> response = new HashMap<>();
@@ -39,34 +38,34 @@ public class PersonController {
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> getAllPersons(@PageableDefault(page = 0, size = 10) Pageable pageable) {
         List<PersonDTO> persons = service.getAllPersons(pageable);
-        return getResponse(PERSONS, persons);
+        return getResponse(ServiceConstants.PERSONS, persons);
     }
 
     @ApiOperation("Returns person by id")
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> getPerson(@PathVariable("id") String id) {
         PersonDTO person = service.getPerson(id);
-        return getResponse(PERSON, person);
+        return getResponse(ServiceConstants.PERSON, person);
     }
 
     @ApiOperation("Returns id after creating a person")
     @PostMapping(value = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> savePersonToDB(@Valid @RequestBody PersonDTO person) {
         String userId = service.createPerson(person);
-        return getResponse(USER_ID, userId);
+        return getResponse(ServiceConstants.USER_ID, userId);
     }
 
     @ApiOperation("Returns id after updating a person")
     @PutMapping(value = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> editPersonInDB(@RequestBody PersonDTO person) {
         String userId = service.updatePerson(person);
-        return getResponse(USER_ID, userId);
+        return getResponse(ServiceConstants.USER_ID, userId);
     }
 
     @ApiOperation("Returns id after removing a person")
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> deletePersonFromDB(@PathVariable String id) {
         String userId = service.deletePerson(id);
-        return getResponse(USER_ID, userId);
+        return getResponse(ServiceConstants.USER_ID, userId);
     }
 }

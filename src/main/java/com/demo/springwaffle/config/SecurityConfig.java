@@ -18,14 +18,19 @@ import waffle.spring.NegotiateSecurityFilterEntryPoint;
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private NegotiateSecurityFilter negotiateSecurityFilter;
+    private final NegotiateSecurityFilter negotiateSecurityFilter;
 
-    @Autowired
-    private NegotiateSecurityFilterEntryPoint entryPoint;
+    private final NegotiateSecurityFilterEntryPoint entryPoint;
 
-    @Autowired
-    private UserContextInjectionFilter userContextInjectorFilter;
+    private final UserContextInjectionFilter userContextInjectorFilter;
+    
+    public SecurityConfig(NegotiateSecurityFilter negotiateSecurityFilter,
+                          NegotiateSecurityFilterEntryPoint entryPoint,
+                          UserContextInjectionFilter userContextInjectorFilter) {
+        this.negotiateSecurityFilter = negotiateSecurityFilter;
+        this.entryPoint = entryPoint;
+        this.userContextInjectorFilter = userContextInjectorFilter;
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

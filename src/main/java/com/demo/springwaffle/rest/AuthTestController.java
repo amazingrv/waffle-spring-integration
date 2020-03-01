@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping(PathConstants.PATH_API_TEST)
+@RequestMapping(PathConstants.PATH_API_AUTH)
 public class AuthTestController {
 
     @ApiOperation("Returns Authenticated user id and roles")
@@ -25,5 +25,4 @@ public class AuthTestController {
         response.put("message", message);
         return ResponseEntity.ok(response);
     }
-
 }

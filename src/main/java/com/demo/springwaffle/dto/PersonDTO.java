@@ -1,16 +1,15 @@
 package com.demo.springwaffle.dto;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
+@EqualsAndHashCode
 public class PersonDTO {
     @NotBlank(message = "Id is mandatory")
     private String uid;
