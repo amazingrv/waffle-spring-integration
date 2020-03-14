@@ -5,13 +5,16 @@ import com.demo.springwaffle.entity.PersonEntity;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(SpringRunner.class)
+@ContextConfiguration(classes = PersonMapperImpl.class)
 public class PersonMapperTest {
-
+    @Autowired
     private PersonMapper mapper;
 
     private PersonEntity initialEntity;
@@ -21,7 +24,6 @@ public class PersonMapperTest {
 
     @Before
     public void setup() {
-        mapper = new PersonMapper();
         initialEntity = new PersonEntity("123", "ABC");
         expectedDTO = new PersonDTO("123", "ABC");
 
@@ -30,14 +32,16 @@ public class PersonMapperTest {
     }
 
     @Test
-    public void shouldReturnDTOWhenProvidedEntity(){
+    public void shouldReturnDTOWhenProvidedEntity() {
         PersonDTO actualDTO = mapper.toPersonDTO(initialEntity);
+        assertThat(actualDTO).isNotNull();
         assertThat(actualDTO).isEqualTo(expectedDTO);
     }
 
     @Test
-    public void shouldReturnEntityWhenProvidedDTO(){
+    public void shouldReturnEntityWhenProvidedDTO() {
         PersonEntity actualEntity = mapper.toPersonEntity(initialDTO);
+        assertThat(actualEntity).isNotNull();
         assertThat(actualEntity).isEqualTo(expectedEntity);
     }
 }

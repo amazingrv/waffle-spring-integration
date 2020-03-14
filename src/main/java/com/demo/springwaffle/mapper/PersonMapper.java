@@ -2,24 +2,22 @@ package com.demo.springwaffle.mapper;
 
 import com.demo.springwaffle.dto.PersonDTO;
 import com.demo.springwaffle.entity.PersonEntity;
-import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 
-@Component
-@NoArgsConstructor
-public class PersonMapper {
+@Mapper(componentModel = "spring")
+public interface PersonMapper {
 
-    public PersonDTO toPersonDTO(PersonEntity person) {
-        PersonDTO dto = new PersonDTO();
-        dto.setUid(person.getUid());
-        dto.setFirstName(person.getFirstName());
-        return dto;
-    }
+    @Mappings({
+            @Mapping(target = "uid", source = "person.uid"),
+            @Mapping(target = "firstName", source = "person.firstName")
+    })
+    public PersonDTO toPersonDTO(PersonEntity person);
 
-    public PersonEntity toPersonEntity(PersonDTO dto) {
-        PersonEntity entity = new PersonEntity();
-        entity.setUid(dto.getUid());
-        entity.setFirstName(dto.getFirstName());
-        return entity;
-    }
+    @Mappings({
+            @Mapping(target = "uid", source = "dto.uid"),
+            @Mapping(target = "firstName", source = "dto.firstName")
+    })
+    public PersonEntity toPersonEntity(PersonDTO dto);
 }
