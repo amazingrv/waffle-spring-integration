@@ -3,6 +3,7 @@ package com.demo.springwaffle;
 import com.demo.springwaffle.dto.PersonDTO;
 import com.demo.springwaffle.entity.PersonEntity;
 import com.demo.springwaffle.mapper.PersonMapper;
+import com.demo.springwaffle.mapper.PersonMapperImpl;
 import com.demo.springwaffle.repo.PersonRepository;
 import com.demo.springwaffle.service.PersonService;
 import org.junit.Test;
@@ -20,7 +21,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = {PersonService.class, PersonMapper.class})
+@ContextConfiguration(classes = {PersonService.class, PersonMapperImpl.class})
 public class PersonServiceTest {
     @MockBean
     private PersonRepository repository;

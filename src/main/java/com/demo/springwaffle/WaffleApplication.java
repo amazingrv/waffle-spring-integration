@@ -19,12 +19,7 @@ import java.util.Collections;
 @SpringBootApplication
 @EnableAspectJAutoProxy
 @EnableSwagger2
-public class WaffleApplication extends SpringBootServletInitializer {
-
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(WaffleApplication.class);
-    }
+public class WaffleApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(WaffleApplication.class, args);
