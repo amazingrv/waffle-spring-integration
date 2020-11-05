@@ -1,7 +1,6 @@
 package com.amazingrv.springwaffle.rest;
 
 import com.amazingrv.springwaffle.constants.PathConstants;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -16,7 +15,6 @@ import java.util.Map;
 @RequestMapping(PathConstants.API_AUTH)
 public class AuthTestController {
 
-    @ApiOperation("Returns Authenticated user id and roles")
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> getPrincipal(Authentication auth) {
         Map<String, String> response = new HashMap<>();
