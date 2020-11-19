@@ -20,32 +20,32 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	implementation('org.springframework.boot:spring-boot-starter-web') {
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation'
+	implementation(group: 'org.springframework.boot', name: 'spring-boot-starter-web') {
 		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-json'
 	}
-	implementation "com.github.waffle:waffle-spring-security5:2.3.0"
-	implementation "net.java.dev.jna:jna:5.6.0"
-	implementation "net.java.dev.jna:jna-platform:5.6.0"
-	implementation "org.mapstruct:mapstruct:1.4.1.Final"
+	implementation group: 'com.github.waffle', name: 'waffle-spring-security5', version: '2.3.0'
+	implementation group: 'net.java.dev.jna', name: 'jna', version: '5.6.0'
+	implementation group: 'net.java.dev.jna', name: 'jna-platform', version: '5.6.0'
+	implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.4.1.Final'
 
-	compileOnly 'org.projectlombok:lombok'
+	compileOnly group: 'org.projectlombok', name: 'lombok'
 
-	runtimeOnly 'com.h2database:h2'
+	runtimeOnly group: 'com.h2database', name: 'h2'
 
-	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-	annotationProcessor 'org.projectlombok:lombok'
-	annotationProcessor "org.mapstruct:mapstruct-processor:1.4.1.Final"
+	annotationProcessor group: 'org.springframework.boot', name: 'spring-boot-configuration-processor'
+	annotationProcessor group: 'org.projectlombok', name: 'lombok'
+	annotationProcessor group: 'org.mapstruct', name: 'mapstruct-processor', version: '1.4.1.Final'
 
-	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	providedRuntime group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat'
 
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+	testImplementation(group: 'org.springframework.boot', name: 'spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
-	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation group: 'org.springframework.security', name: 'spring-security-test'
 }
 
 test {
