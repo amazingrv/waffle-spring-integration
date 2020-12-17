@@ -4,6 +4,11 @@ import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 
+/**
+ * DTO class for person
+ *
+ * @author rjat3
+ */
 @Getter
 @Setter
 @NoArgsConstructor

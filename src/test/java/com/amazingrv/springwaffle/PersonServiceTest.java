@@ -6,9 +6,11 @@ import com.amazingrv.springwaffle.mapper.PersonMapper;
 import com.amazingrv.springwaffle.mapper.PersonMapperImpl;
 import com.amazingrv.springwaffle.repo.PersonRepository;
 import com.amazingrv.springwaffle.service.PersonService;
+import com.amazingrv.springwaffle.service.impl.PersonServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -20,8 +22,11 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = {PersonService.class, PersonMapperImpl.class})
+/**
+ * @author rjat3
+ */
+@SpringBootTest
+@ContextConfiguration(classes = {PersonServiceImpl.class, PersonMapperImpl.class})
 class PersonServiceTest {
     @MockBean
     private PersonRepository repository;

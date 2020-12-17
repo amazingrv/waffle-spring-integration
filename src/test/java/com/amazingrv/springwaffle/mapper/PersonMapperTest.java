@@ -4,15 +4,15 @@ import com.amazingrv.springwaffle.dto.PersonDTO;
 import com.amazingrv.springwaffle.entity.PersonEntity;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = PersonMapperImpl.class)
+/**
+ * @author rjat3
+ */
+@SpringBootTest(classes = PersonMapperImpl.class)
 class PersonMapperTest {
     @Autowired
     private PersonMapper mapper;

@@ -6,6 +6,11 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
+/**
+ * Mapper for PersonDTO and PersonEntity
+ *
+ * @author rjat3
+ */
 @Mapper(componentModel = "spring")
 public interface PersonMapper {
 

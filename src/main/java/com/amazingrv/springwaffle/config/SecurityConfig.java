@@ -1,6 +1,6 @@
 package com.amazingrv.springwaffle.config;
 
-import com.amazingrv.springwaffle.filter.UserContextInjectionFilter;
+import com.amazingrv.springwaffle.filter.UserAuthFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -13,6 +13,9 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import waffle.spring.NegotiateSecurityFilter;
 import waffle.spring.NegotiateSecurityFilterEntryPoint;
 
+/**
+ * @author rjat3
+ */
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
@@ -22,11 +25,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final NegotiateSecurityFilterEntryPoint entryPoint;
 
-    private final UserContextInjectionFilter userContextInjectorFilter;
+    private final UserAuthFilter userContextInjectorFilter;
 
     public SecurityConfig(NegotiateSecurityFilter negotiateSecurityFilter,
                           NegotiateSecurityFilterEntryPoint entryPoint,
-                          UserContextInjectionFilter userContextInjectorFilter) {
+                          UserAuthFilter userContextInjectorFilter) {
         this.negotiateSecurityFilter = negotiateSecurityFilter;
         this.entryPoint = entryPoint;
         this.userContextInjectorFilter = userContextInjectorFilter;

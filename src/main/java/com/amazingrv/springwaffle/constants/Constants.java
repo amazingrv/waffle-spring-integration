@@ -2,9 +2,12 @@ package com.amazingrv.springwaffle.constants;
 
 /**
  * Service constants
+ *
+ * @author rjat3
  */
-public class ServiceConstants {
-    private ServiceConstants() {
+public class Constants {
+    private Constants() {
+        // empty private constructor
     }
 
     public static final String PERSONS = "persons";

@@ -13,7 +13,9 @@ import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Aspect for logging execution of service and repository Spring components.
+ * Aspect for logging execution of service and repository Spring components
+ *
+ * @author rjat3
  */
 @Aspect
 @Component
@@ -21,31 +23,31 @@ import java.util.concurrent.TimeUnit;
 public class LoggingAspect {
 
     /**
-     * Pointcut that matches all repositories, services and Web REST endpoints.
+     * Pointcut that matches all repositories, services and Web REST endpoints
      */
     @Pointcut("within(@org.springframework.stereotype.Repository *)"
             + " || within(@org.springframework.stereotype.Service *)"
             + " || within(@org.springframework.web.bind.annotation.RestController *)")
     public void springBeanPointcut() {
         // Method is empty as this is just a Pointcut, the implementations are in the
-        // advices.
+        // advices
     }
 
     /**
-     * Pointcut that matches all Spring beans in the application's main packages.
+     * Pointcut that matches all Spring beans in the application's main packages
      */
     @Pointcut(value = "within(com.demo.springwaffle.repo..*)" + "within(com.demo.springwaffle.service..*)"
             + " || within(com.demo.springwaffle.rest..*)")
     public void applicationPackagePointcut() {
         // Method is empty as this is just a Pointcut, the implementations are in the
-        // advices.
+        // advices
     }
 
     /**
-     * Advice that logs methods throwing exceptions.
+     * Advice that logs methods throwing exceptions
      *
-     * @param joinPoint join point for advice.
-     * @param e         exception.
+     * @param joinPoint join point for advice
+     * @param e         exception
      */
     @AfterThrowing(pointcut = "applicationPackagePointcut() && springBeanPointcut()", throwing = "e")
     public void logAfterThrowing(JoinPoint joinPoint, Throwable e) {
@@ -55,11 +57,11 @@ public class LoggingAspect {
     }
 
     /**
-     * Advice that logs when a method is entered and exited.
+     * Advice that logs when a method is entered and exited
      *
-     * @param joinPoint join point for advice.
-     * @return result.
-     * @throws Throwable throws {@link IllegalArgumentException}.
+     * @param joinPoint join point for advice
+     * @return result
+     * @throws Throwable throws {@link IllegalArgumentException}
      */
     @Around("applicationPackagePointcut() && springBeanPointcut()")
     public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {

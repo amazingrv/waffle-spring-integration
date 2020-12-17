@@ -7,6 +7,11 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+/**
+ * Entity class for Person in DB
+ *
+ * @author rjat3
+ */
 @Data
 @Entity
 @NoArgsConstructor

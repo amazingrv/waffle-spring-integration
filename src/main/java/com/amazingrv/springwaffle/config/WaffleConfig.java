@@ -12,6 +12,11 @@ import waffle.windows.auth.impl.WindowsAuthProviderImpl;
 
 import java.util.Arrays;
 
+/**
+ * Configuration data for Waffle security and auth filters
+ *
+ * @author rjat3
+ */
 @Configuration
 public class WaffleConfig {
     @Bean

@@ -1,6 +1,7 @@
 package com.amazingrv.springwaffle.filter;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.lang.NonNull;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
@@ -17,12 +18,17 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.regex.Pattern;
 
+/**
+ * Filter to determine the identity and role for user once per request
+ *
+ * @author rjat3
+ */
 @Slf4j
 @Component
-public class UserContextInjectionFilter extends OncePerRequestFilter {
+public class UserAuthFilter extends OncePerRequestFilter {
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+    protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         SecurityContext sec = SecurityContextHolder.getContext();
         Authentication authentication = sec.getAuthentication();
@@ -42,6 +48,12 @@ public class UserContextInjectionFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
+    /**
+     * Helper method to determine the role of the user
+     *
+     * @param authentication
+     * @param isAdmin
+     */
     private void addRoleToAuthentication(WindowsAuthenticationToken authentication, boolean isAdmin) {
         authentication.getAuthorities().clear();
         authentication.getAuthorities().add(new SimpleGrantedAuthority("ROLE_USER"));
