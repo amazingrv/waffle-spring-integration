@@ -10,6 +10,10 @@ import java.util.Map;
  * @author rjat3
  */
 public final class ResponseUtils {
+    private ResponseUtils() {
+        // empty constructor
+    }
+
     /**
      * Helper method to create response to be returned
      *
