@@ -28,7 +28,7 @@ dependencies {
 	implementation group: 'com.github.waffle', name: 'waffle-spring-security5', version: '2.3.0'
 	implementation group: 'net.java.dev.jna', name: 'jna', version: '5.6.0'
 	implementation group: 'net.java.dev.jna', name: 'jna-platform', version: '5.6.0'
-	implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.4.1.Final'
+	implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.4.2.Final'
 
 	compileOnly group: 'org.projectlombok', name: 'lombok'
 
