@@ -37,7 +37,7 @@ dependencies {
 	runtimeOnly group: 'com.h2database', name: 'h2'
 
 	annotationProcessor group: 'org.projectlombok', name: 'lombok'
-	annotationProcessor group: 'org.mapstruct', name: 'mapstruct-processor', version: '1.4.1.Final'
+	annotationProcessor group: 'org.mapstruct', name: 'mapstruct-processor', version: '1.4.2.Final'
 
 	providedRuntime group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat'
 
